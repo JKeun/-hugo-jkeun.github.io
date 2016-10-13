@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jnotes</title>
+    <link>https://jkeun.github.io/tags/python/index.xml</link>
+    <description>Recent content on jnotes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <copyright>Code released under the Apache 2.0 license.</copyright>
+    <atom:link href="https://jkeun.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>hello world</title>
+      <link>https://jkeun.github.io/post/hello-world/</link>
+      <pubDate>Thu, 13 Oct 2016 19:19:27 +0900</pubDate>
+      
+      <guid>https://jkeun.github.io/post/hello-world/</guid>
+      <description>
+
+&lt;h1 id=&#34;데이터-분석-개발-환경-python-v2-7-11&#34;&gt;데이터 분석 개발 환경 ( python v2.7.11 )&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;pyenv-virtualenv-autoenv&#34;&gt;pyenv, virtualenv, autoenv&lt;/h2&gt;
+
+&lt;h3 id=&#34;pyenv-virtualenv&#34;&gt;pyenv + virtualenv&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$ brew update&lt;/code&gt;
+&lt;code&gt;$ brew install pyenv&lt;/code&gt;
+&lt;code&gt;$ brew install pyenv-virtualenv&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;.bash_profile&lt;/code&gt; &amp;amp; &lt;code&gt;.zshrc&lt;/code&gt; 에 문구 추가&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;export PATH=&amp;quot;$HOME/.pyenv/bin:$PATH&amp;quot;
+eval &amp;quot;$(pyenv init -)&amp;quot;
+eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;pyenv
+&lt;code&gt;$ pyenv version&lt;/code&gt;
+&lt;code&gt;$ pyenv install -list&lt;/code&gt; : 설치할 수 있는 파이썬 리스트
+&lt;code&gt;$ pyenv install [VERSION]&lt;/code&gt;  : 설치
+&lt;code&gt;$ pyenv shell [VERSION]&lt;/code&gt; : 해당 버전 실행
+&lt;code&gt;$ python -version&lt;/code&gt; : 실행중인 파이썬 버전 확인&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;virtualenv
+&lt;code&gt;$ pyenv virtualenv [VERSION] [VIRTUALENV_NAME]&lt;/code&gt; : 생성
+&lt;code&gt;$ virtualenv versions&lt;/code&gt; : 해당 버전 확인
+&lt;code&gt;$ pyenv activate [VIRTUALENV_NAME]&lt;/code&gt; : 해당 버전 실행
+&lt;code&gt;$ pyenv deactivate&lt;/code&gt; : 실행중인 버전 종료&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;requirements.txt
+&lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt; :
+&lt;code&gt;$ pip list &amp;gt; requirements.txt&lt;/code&gt;
+&lt;code&gt;other-user$ pip install -r requirements.txt&lt;/code&gt; : 다른 사용자가 설치할 경우&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;autoenv
+&lt;code&gt;$ brew install autoenv&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;.bash_profile(.zshrc) 에 추가하기
+&lt;code&gt;$ source ~/.autoenv/activate.sh&lt;/code&gt;
+or .bash_profile , .zshrc 에 각각 아래를 추가
+&lt;code&gt;$source ~/.commonrc&lt;/code&gt;
+&lt;code&gt;$ vi ~/.commonrc&lt;/code&gt; 만든 후
+&lt;code&gt;source ~/.autoenv/activate.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;autoenv 실행하기
+프로젝트 폴더에 &lt;code&gt;$ vi .env&lt;/code&gt; 생성 후&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;pip-install-module&#34;&gt;pip install [module]&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$ pip install numpy&lt;/code&gt;
+&amp;hellip;
+statsmodels 은 dev 버전 설치&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;ipython&#34;&gt;./ipython/&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;파이썬 전체에 대한 적용&lt;/li&gt;
+&lt;li&gt;pyenv는 pip install [module] 이 독립적이나, 아래의 것들은 pyenv 상관없이, python 을 쓰는 환경에는 모두 적용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;00-py&#34;&gt;00.py&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;~/.ipython/profile_default/startup/00.py
+```&lt;/p&gt;
+
+&lt;h1 id=&#34;from-future-import-division&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import division&lt;/h1&gt;
+
+&lt;p&gt;from &lt;strong&gt;future&lt;/strong&gt; import print_function&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;import numpy as np
+import scipy as sp
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+import statsmodels.stats.api as sms
+import sklearn as sk
+import matplotlib as mpl
+import matplotlib.pylab as plt
+from mpl_toolkits.mplot3d import Axes3D
+import seaborn as sns&lt;/p&gt;
+
+&lt;p&gt;sns.set()
+sns.set_color_codes()&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+---
+### ipython_config.py
+- ~/.ipython/profile_default
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;c = get_config()&lt;/p&gt;
+
+&lt;p&gt;c.InteractiveShellApp.exec_lines = [
+	&amp;lsquo;from &lt;strong&gt;future&lt;/strong&gt; import division&amp;rsquo;
+	# &amp;lsquo;from &lt;strong&gt;future&lt;/strong&gt; import print_function
+&amp;lsquo;
+]&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+---
+### ipython_kernerl_config.py
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;c = get_config()
+c.InteractiveShellApp.matplotlib = &amp;lsquo;inline&amp;rsquo;
+c.InlineBackend.figure_format = &amp;lsquo;svg&amp;rsquo;
+```&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

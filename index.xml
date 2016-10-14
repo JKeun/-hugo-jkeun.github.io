@@ -6,9 +6,109 @@
     <description>Recent content on jnotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <copyright>Code released under the Apache 2.0 license.</copyright>
-    <lastBuildDate>Thu, 13 Oct 2016 19:19:27 +0900</lastBuildDate>
+    <copyright>Copyright(c)2016 JKEUN All rights reserved.</copyright>
+    <lastBuildDate>Fri, 14 Oct 2016 12:48:34 +0900</lastBuildDate>
     <atom:link href="https://jkeun.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>about</title>
+      <link>https://jkeun.github.io/about/</link>
+      <pubDate>Fri, 14 Oct 2016 12:48:34 +0900</pubDate>
+      
+      <guid>https://jkeun.github.io/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;jay&#34;&gt;Jay&lt;/h1&gt;
+
+&lt;p&gt;Man who enjoys studying  Data Sciecne, Statistics and Web Development.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;skills&#34;&gt;skills&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Data Science, Machine Learning, Python, SQL, NoSQL, mongodb, Node.js&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;projects&#34;&gt;projects&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-personal-movie-rating-sys&#34;&gt;1. Personal Movie Rating Sys&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Predicted rating of movies ( rating is 0 to 5 )&lt;/li&gt;
+&lt;li&gt;Used &lt;em&gt;Multinomial Naive Bayes&lt;/em&gt; and &lt;em&gt;Gaussian Navie Bayes&lt;/em&gt; model&lt;/li&gt;
+&lt;li&gt;Crawled data from Watcha.net&lt;/li&gt;
+&lt;li&gt;One Standard Error Rule&lt;/li&gt;
+&lt;li&gt;Result
+
+&lt;ul&gt;
+&lt;li&gt;twice better than Watcha&amp;rsquo;s rating system&lt;/li&gt;
+&lt;li&gt;mae score is 0.25 (Watcha&amp;rsquo;s is 0.48)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Repo
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JKeun/project-02-watcha&#34;&gt;github.com/JKeun/project-02-watcha&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-find-my-job&#34;&gt;2. Find my job&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Matching your job when you input your personality and skills&lt;/li&gt;
+&lt;li&gt;Classes are &amp;ldquo;Data Scientist&amp;rdquo;, &amp;ldquo;Digital Marketer&amp;rdquo;, &amp;ldquo;UX/UI Designer&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Used &lt;em&gt;Multinomial Naive Bayes&lt;/em&gt; and &lt;em&gt;SGD&lt;/em&gt; model&lt;/li&gt;
+&lt;li&gt;Crawled data from linkedin&lt;/li&gt;
+&lt;li&gt;One Standard Error Rule&lt;/li&gt;
+&lt;li&gt;Words-cloud&lt;/li&gt;
+&lt;li&gt;Repo
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/JKeun/project-01-findmyjob&#34;&gt;github.com/JKeun/project-01-findmyjob&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;exprience&#34;&gt;exprience&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-fast-campus-seoul-korea-apr-2016&#34;&gt;1. Fast Campus, Seoul, Korea (Apr. 2016 ~ )&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Course Manger&lt;/li&gt;
+&lt;li&gt;Manage Data Science School&lt;/li&gt;
+&lt;li&gt;Communicate with teachers &amp;amp; students&lt;/li&gt;
+&lt;li&gt;Build up a system of course&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-hanjin-seoul-korea-aug-2015-aug-2015&#34;&gt;2. HanJin, Seoul, Korea (Aug. 2015 - Aug. 2015)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Internship&lt;/li&gt;
+&lt;li&gt;Managed warehouse &amp;amp; invnetory&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-korean-airline-hongkong-jan-2015-feb-2015&#34;&gt;3. Korean Airline, HongKong (Jan. 2015 - Feb. 2015)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Internship&lt;/li&gt;
+&lt;li&gt;Managed air cargo &amp;amp; schedule&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;education&#34;&gt;education&lt;/h2&gt;
+
+&lt;h3 id=&#34;korean-aerospace-university-seoul-korea-mar-2009-feb-2016&#34;&gt;Korean Aerospace University, Seoul, Korea (Mar. 2009 - Feb. 2016)&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Majored in Logistics and SCM&lt;/li&gt;
+&lt;li&gt;GPA 4.19 / 4.5&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Python Development Environment Setting</title>

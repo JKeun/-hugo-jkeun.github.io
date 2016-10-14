@@ -2,7 +2,6 @@
 <html lang="ko-kr">
 
 <head>
-	<meta name="generator" content="Hugo 0.17" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>jnotes -- jnotes</title>
+    <title>Python Development Environment Setting -- jnotes</title>
 
-    
-    <link href="https://jkeun.github.io/index.xml" rel="alternate" type="application/rss+xml" title="jnotes" />
-    <link href="https://jkeun.github.io/index.xml" rel="feed" type="application/rss+xml" title="jnotes" />
     
 
     
@@ -74,50 +70,120 @@
 
 
     
-    <header class="intro-header" style="background-image: url('https://jkeun.github.io//img/home-bg.jpg')">
-     <div class="container">
-       <div class="row">
-         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-           <div class="site-heading">
-             <h1>jnotes</h1>
-             <hr class="small">
-             <span class="subheading">Data, Learning</span>
+    
+    <header class="intro-header" style="background-image: url('https://jkeun.github.io///img/about-bg.jpg')">
+      
+      <div class="container">
+        <div class="row">
+           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+             <div class="post-heading">
+               <h1>Python Development Environment Setting</h1>
+               <h2 class="subheading">Pyenv, Virtualenv, Autoenv</h2>
+               <span class="meta">Posted by <a href="#">Jay</a> on Fri, Oct 107, 13106
+                 <br />
+                 In <a href="https://jkeun.github.io/categories/development">Development</a>
+
+                 <br />
+                 Tags <a href="https://jkeun.github.io/tags/python">python</a>, <a href="https://jkeun.github.io/tags/dev">dev</a>, <a href="https://jkeun.github.io/tags/development">development</a>, <a href="https://jkeun.github.io/tags/pyenv">pyenv</a>, <a href="https://jkeun.github.io/tags/virtualenv">virtualenv</a>, <a href="https://jkeun.github.io/tags/autoenv">autoenv</a>
+               </span>
+             </div>
            </div>
-         </div>
-       </div>
-     </div>
+        </div>
+      </div>
     </header>
 
     
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          
-                             <div class="post-preview">
-                 <a href="https://jkeun.github.io/post/python-dev-env-setting/">
-                      <h2 class="post-title">Python Development Environment Setting</h2>
-                      <h3 class="post-subtitle">Pyenv, Virtualenv, Autoenv</h3>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Jay</a> on Fri, Oct 107, 13106
-                    <br />
-                    In <a href="https://jkeun.github.io/categories/development">Development</a>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
 
-                    <br />
-                    Tags <a href="https://jkeun.github.io/tags/python">python</a>, <a href="https://jkeun.github.io/tags/dev">dev</a>, <a href="https://jkeun.github.io/tags/development">development</a>, <a href="https://jkeun.github.io/tags/pyenv">pyenv</a>, <a href="https://jkeun.github.io/tags/virtualenv">virtualenv</a>, <a href="https://jkeun.github.io/tags/autoenv">autoenv</a>
-                  </p>
+<h1 id="데이터-분석-개발-환경-python-v2-7-11">데이터 분석 개발 환경 ( python v2.7.11 )</h1>
+
+<p>파이썬 개발환경 및 패키지 관리 자동화를 위한 세팅</p>
+
+<hr />
+
+<h2 id="pyenv-virtualenv">pyenv + virtualenv</h2>
+
+<p>pyenv 는 파이썬 2.7, 3.11 을 자유롭게 오가며 사용할 수 있게 해준다.</p>
+
+<p><strong>brew upate, install pyenv, virtualenv</strong></p>
+
+<ul>
+<li><code>$ brew update</code></li>
+<li><code>$ brew install pyenv</code></li>
+<li><code>$ brew install pyenv-virtualenv</code></li>
+</ul>
+
+<p><strong>.bash_profile &amp; .zshrc 에 문구 추가</strong></p>
+
+<pre><code>export PATH=&quot;$HOME/.pyenv/bin:$PATH&quot;
+eval &quot;$(pyenv init -)&quot;
+eval &quot;$(pyenv virtualenv-init -)&quot;
+</code></pre>
+
+<p><strong>pyenv 사용법</strong></p>
+
+<ul>
+<li><code>$ pyenv version</code></li>
+<li><code>$ pyenv install -list</code> : 설치할 수 있는 파이썬 리스트</li>
+<li><code>$ pyenv install [VERSION]</code>  : 설치</li>
+<li><code>$ pyenv shell [VERSION]</code> : 해당 버전 실행</li>
+<li><code>$ python -version</code> : 실행중인 파이썬 버전 확인</li>
+</ul>
+
+<p><strong>virtualenv 사용법</strong></p>
+
+<ul>
+<li><code>$ pyenv virtualenv [VERSION] [VIRTUALENV_NAME]</code> : 생성</li>
+<li><code>$ virtualenv versions</code> : 해당 버전 확인</li>
+<li><code>$ pyenv activate [VIRTUALENV_NAME]</code> : 해당 버전 실행</li>
+<li><code>$ pyenv deactivate</code> : 실행중인 버전 종료</li>
+</ul>
+
+<p><strong>requirements.txt</strong></p>
+
+<ul>
+<li><code>$ pip freeze &gt; requirements.txt</code></li>
+<li><code>$ pip list &gt; requirements.txt</code></li>
+<li><code>$ pip install -r requirements.txt</code> : 다른 사용자가 설치할 경우</li>
+</ul>
+
+<p><strong>autoenv 설치 및 세팅</strong></p>
+
+<ul>
+<li><code>$ brew install autoenv</code></li>
+<li>.bash_profile(or .zshrc) 에 추가하기</li>
+<li><code>$ source ~/.autoenv/activate.sh</code>
+
+<ul>
+<li>또는 .bash_profile , .zshrc 에 <code>$source ~/.commonrc</code> 를 추가 후</li>
+<li><code>$ vi ~/.commonrc</code> 를 만든 후</li>
+<li>.commonrc에 <code>source ~/.autoenv/activate.sh</code>를 추가</li>
+</ul></li>
+</ul>
+
+<p><strong>autoenv 실행하기</strong></p>
+
+<ul>
+<li>해당 프로젝트 폴더에 <code>$ vi .env</code> 생성 후 아래를 추가</li>
+</ul>
+
+<pre><code>echo &quot;Activating pyenv for [PROJECT_NAME] Python v.3.5.1&quot;
+pyenv activate [PROJECT_NAME]
+</code></pre>
+
+<ul>
+<li>이후 해당 폴더에 들어올 때마다 파이썬환경 자동으로 켜짐</li>
+<li><code>$pyenv deactivate</code> : 해당 파이썬 환경 종료</li>
+</ul>
+
                 </div>
-                <hr>
-
-          
-          
-          <ul class="pager">
-            <li class="next">
-              <a href="https://jkeun.github.io//post/">Older Posts &rarr;</a>
-            </li>
-          </ul>
+            </div>
         </div>
-      </div>
-    </div>
+    </article>
 
     <hr>
     

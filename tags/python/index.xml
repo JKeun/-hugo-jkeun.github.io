@@ -17,9 +17,9 @@
       <guid>https://jkeun.github.io/post/python-dev-env-setting/</guid>
       <description>
 
-&lt;h1 id=&#34;데이터-분석-개발-환경-python-v2-7-11&#34;&gt;데이터 분석 개발 환경 ( python v2.7.11 )&lt;/h1&gt;
+&lt;h1 id=&#34;파이썬-개발-환경-세팅-python-v2-7-11&#34;&gt;파이썬 개발 환경 세팅 ( python v2.7.11 )&lt;/h1&gt;
 
-&lt;p&gt;파이썬 개발환경 및 패키지 관리 자동화를 위한 세팅&lt;/p&gt;
+&lt;p&gt;파이썬 개발환경 및 패키지 관리 자동화&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -69,6 +69,10 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;li&gt;&lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt; : 다른 사용자가 설치할 경우&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;autoenv&#34;&gt;autoenv&lt;/h2&gt;
+
 &lt;p&gt;&lt;strong&gt;autoenv 설치 및 세팅&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -96,6 +100,15 @@ pyenv activate [PROJECT_NAME]
 &lt;ul&gt;
 &lt;li&gt;이후 해당 폴더에 들어올 때마다 파이썬환경 자동으로 켜짐&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$pyenv deactivate&lt;/code&gt; : 해당 파이썬 환경 종료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dobest.io/how-to-set-python-dev-env/&#34;&gt;https://dobest.io/how-to-set-python-dev-env/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&#34;&gt;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

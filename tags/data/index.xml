@@ -6,100 +6,75 @@
     <description>Recent content on jnotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
-    <copyright>Code released under the Apache 2.0 license.</copyright>
+    <copyright>Copyright © 2016 by JKEUN All rights reserved.</copyright>
     <atom:link href="https://jkeun.github.io/tags/data/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>hello world</title>
-      <link>https://jkeun.github.io/post/hello-world/</link>
-      <pubDate>Thu, 13 Oct 2016 19:19:27 +0900</pubDate>
+      <title>Data Analysis Environment Setting</title>
+      <link>https://jkeun.github.io/post/data-analysis-env-setting/</link>
+      <pubDate>Fri, 14 Oct 2016 10:11:07 +0900</pubDate>
       
-      <guid>https://jkeun.github.io/post/hello-world/</guid>
+      <guid>https://jkeun.github.io/post/data-analysis-env-setting/</guid>
       <description>
 
-&lt;h1 id=&#34;데이터-분석-개발-환경-python-v2-7-11&#34;&gt;데이터 분석 개발 환경 ( python v2.7.11 )&lt;/h1&gt;
+&lt;h1 id=&#34;데이터-분석을-위한-초기-환경-세팅&#34;&gt;데이터 분석을 위한 초기 환경 세팅&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;기본적인 패키지 설치와 ipython(jupyter) 개발 환경에서 자주 사용하는 패키지 import 자동화를 다룬다.&lt;/li&gt;
+&lt;li&gt;python 2 에서도 print 함수, division 함수를 python 3 버전처럼 사용할 수 있도록 한다.&lt;/li&gt;
+&lt;li&gt;matplotlib 의 그래프 inline 출력 자동화를 다룬다.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&#34;pyenv-virtualenv-autoenv&#34;&gt;pyenv, virtualenv, autoenv&lt;/h2&gt;
+&lt;h2 id=&#34;pip-install-module&#34;&gt;pip install [module]&lt;/h2&gt;
 
-&lt;h3 id=&#34;pyenv-virtualenv&#34;&gt;pyenv + virtualenv&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터 분석에 필요한 기본 패키지 설치&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;code&gt;$ brew update&lt;/code&gt;
-&lt;code&gt;$ brew install pyenv&lt;/code&gt;
-&lt;code&gt;$ brew install pyenv-virtualenv&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;.bash_profile&lt;/code&gt; &amp;amp; &lt;code&gt;.zshrc&lt;/code&gt; 에 문구 추가&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;export PATH=&amp;quot;$HOME/.pyenv/bin:$PATH&amp;quot;
-eval &amp;quot;$(pyenv init -)&amp;quot;
-eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
+&lt;pre&gt;&lt;code&gt;$ pip install numpy
+$ pip install pandas
+$ pip install sklearn
+$ pip install matplotlib
+$ pip install seaborn
+$ pip install [ mongodb / bs4 / requests / ... ] 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;pyenv
-&lt;code&gt;$ pyenv version&lt;/code&gt;
-&lt;code&gt;$ pyenv install -list&lt;/code&gt; : 설치할 수 있는 파이썬 리스트
-&lt;code&gt;$ pyenv install [VERSION]&lt;/code&gt;  : 설치
-&lt;code&gt;$ pyenv shell [VERSION]&lt;/code&gt; : 해당 버전 실행
-&lt;code&gt;$ python -version&lt;/code&gt; : 실행중인 파이썬 버전 확인&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;virtualenv
-&lt;code&gt;$ pyenv virtualenv [VERSION] [VIRTUALENV_NAME]&lt;/code&gt; : 생성
-&lt;code&gt;$ virtualenv versions&lt;/code&gt; : 해당 버전 확인
-&lt;code&gt;$ pyenv activate [VIRTUALENV_NAME]&lt;/code&gt; : 해당 버전 실행
-&lt;code&gt;$ pyenv deactivate&lt;/code&gt; : 실행중인 버전 종료&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;requirements.txt
-&lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt; :
-&lt;code&gt;$ pip list &amp;gt; requirements.txt&lt;/code&gt;
-&lt;code&gt;other-user$ pip install -r requirements.txt&lt;/code&gt; : 다른 사용자가 설치할 경우&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;autoenv
-&lt;code&gt;$ brew install autoenv&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;.bash_profile(.zshrc) 에 추가하기
-&lt;code&gt;$ source ~/.autoenv/activate.sh&lt;/code&gt;
-or .bash_profile , .zshrc 에 각각 아래를 추가
-&lt;code&gt;$source ~/.commonrc&lt;/code&gt;
-&lt;code&gt;$ vi ~/.commonrc&lt;/code&gt; 만든 후
-&lt;code&gt;source ~/.autoenv/activate.sh&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;autoenv 실행하기
-프로젝트 폴더에 &lt;code&gt;$ vi .env&lt;/code&gt; 생성 후&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;pip-install-module&#34;&gt;pip install [module]&lt;/h3&gt;
-
-&lt;p&gt;&lt;code&gt;$ pip install numpy&lt;/code&gt;
-&amp;hellip;
-statsmodels 은 dev 버전 설치&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;ipython&#34;&gt;./ipython/&lt;/h2&gt;
+&lt;li&gt;&lt;strong&gt;statsmodels&lt;/strong&gt; 은 &lt;code&gt;pip install statsmodel&lt;/code&gt; 이 아닌 dev 버전 설치 ( 더 많은 기능 )
 
 &lt;ul&gt;
-&lt;li&gt;파이썬 전체에 대한 적용&lt;/li&gt;
-&lt;li&gt;pyenv는 pip install [module] 이 독립적이나, 아래의 것들은 pyenv 상관없이, python 을 쓰는 환경에는 모두 적용&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install --upgrade --no-deps statsmodels&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;그 외 statsmodels 를 설치할때 뜨는 각종 모듈도 에러 문구 보면서 설치
+
+&lt;ul&gt;
+&lt;li&gt;ex. &lt;code&gt;pip install patsy&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;hr /&gt;
+
+&lt;h2 id=&#34;ipython-세팅하기&#34;&gt;~/.ipython/ 세팅하기&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ipython 전체에 대한 적용&lt;/li&gt;
+&lt;li&gt;pyenv는 pip install [module] 이 개별 분석 환경에 독립적으로 설치하는 것인 반면, &lt;code&gt;~/.ipython/&lt;/code&gt; 폴더의 설정은 모든 python 분석 환경에 적용&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&#34;00-py&#34;&gt;00.py&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;~/.ipython/profile_default/startup/00.py
-```&lt;/p&gt;
-
-&lt;h1 id=&#34;from-future-import-division&#34;&gt;from &lt;strong&gt;future&lt;/strong&gt; import division&lt;/h1&gt;
-
-&lt;p&gt;from &lt;strong&gt;future&lt;/strong&gt; import print_function&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;모듈 자동 import&lt;/li&gt;
+&lt;li&gt;startup 폴더에 00.py 파일을 만듦으로써 ipython 이 시작할때, 가장 먼저 이 파일이 실행되도록 한다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_default/startup/00.py&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;import numpy as np
+&lt;pre&gt;&lt;code&gt;# from __future__ import division
+from __future__ import print_function
+
+import numpy as np
 import scipy as sp
 import pandas as pd
 import statsmodels.api as sm
@@ -109,34 +84,45 @@ import sklearn as sk
 import matplotlib as mpl
 import matplotlib.pylab as plt
 from mpl_toolkits.mplot3d import Axes3D
-import seaborn as sns&lt;/p&gt;
+import seaborn as sns
 
-&lt;p&gt;sns.set()
-sns.set_color_codes()&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
----
-### ipython_config.py
-- ~/.ipython/profile_default
+sns.set()
+sns.set_color_codes()
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;c = get_config()&lt;/p&gt;
+&lt;h3 id=&#34;ipython-config-py&#34;&gt;ipython_config.py&lt;/h3&gt;
 
-&lt;p&gt;c.InteractiveShellApp.exec_lines = [
-	&amp;lsquo;from &lt;strong&gt;future&lt;/strong&gt; import division&amp;rsquo;
-	# &amp;lsquo;from &lt;strong&gt;future&lt;/strong&gt; import print_function
-&amp;lsquo;
-]&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ipython 의 기본설정 파일&lt;/li&gt;
+&lt;li&gt;division 문의 경우 &lt;strong&gt;00.py&lt;/strong&gt; 에서 불러올 땐 작동하지 않고, &lt;strong&gt;ipython_config.py&lt;/strong&gt; 에서 작동함&lt;/li&gt;
+&lt;li&gt;print 문의 경우 &lt;strong&gt;00.py&lt;/strong&gt;, &lt;strong&gt;ipython_config.py&lt;/strong&gt; 둘다 작동 잘 됨
 
-&lt;pre&gt;&lt;code&gt;
----
-### ipython_kernerl_config.py
+&lt;ul&gt;
+&lt;li&gt;따라서 ipython_config.py 에는 division 문을 추가한다&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_default/ipython_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;c = get_config()
+
+c.InteractiveShellApp.exec_lines = [
+	&#39;from __future__ import division&#39;
+	# &#39;from __future__ import print_function&#39;
+]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;c = get_config()
-c.InteractiveShellApp.matplotlib = &amp;lsquo;inline&amp;rsquo;
-c.InlineBackend.figure_format = &amp;lsquo;svg&amp;rsquo;
-```&lt;/p&gt;
+&lt;h3 id=&#34;ipython-kernel-config-py&#34;&gt;ipython_kernel_config.py&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ipython kernel 설정&lt;/li&gt;
+&lt;li&gt;그래프를 그리는 작업을 할 때 inline 으로 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_defalult/ipython_kernel_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;c = get_config()
+c.InteractiveShellApp.matplotlib = &#39;inline&#39;
+c.InlineBackend.figure_format = &#39;svg&#39;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     

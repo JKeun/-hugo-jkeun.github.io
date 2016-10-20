@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jnotes</title>
-    <link>https://jkeun.github.io/tags/dev/index.xml</link>
+    <link>https://jkeun.github.io/tags/jupyter/index.xml</link>
     <description>Recent content on jnotes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <copyright>Copyright © 2016 by JKEUN All rights reserved.</copyright>
-    <atom:link href="https://jkeun.github.io/tags/dev/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jkeun.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Data Analysis Environment Setting</title>
@@ -123,110 +123,6 @@ c.InteractiveShellApp.exec_lines = [
 c.InteractiveShellApp.matplotlib = &#39;inline&#39;
 c.InlineBackend.figure_format = &#39;svg&#39;
 &lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Python Development Environment Setting</title>
-      <link>https://jkeun.github.io/post/python-dev-env-setting/</link>
-      <pubDate>Thu, 13 Oct 2016 19:19:27 +0900</pubDate>
-      
-      <guid>https://jkeun.github.io/post/python-dev-env-setting/</guid>
-      <description>
-
-&lt;h1 id=&#34;파이썬-개발-환경-세팅-python-v2-7-11&#34;&gt;파이썬 개발 환경 세팅 ( python v2.7.11 )&lt;/h1&gt;
-
-&lt;p&gt;파이썬 개발환경 및 패키지 관리 자동화&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;pyenv-virtualenv&#34;&gt;pyenv + virtualenv&lt;/h2&gt;
-
-&lt;p&gt;pyenv 는 파이썬 2.7, 3.11 을 자유롭게 오가며 사용할 수 있게 해준다.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;brew upate, install pyenv, virtualenv&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$ brew update&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ brew install pyenv&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ brew install pyenv-virtualenv&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;.bash_profile &amp;amp; .zshrc 에 문구 추가&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;export PATH=&amp;quot;$HOME/.pyenv/bin:$PATH&amp;quot;
-eval &amp;quot;$(pyenv init -)&amp;quot;
-eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;pyenv 사용법&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv version&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv install -list&lt;/code&gt; : 설치할 수 있는 파이썬 리스트&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv install [VERSION]&lt;/code&gt;  : 설치&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv shell [VERSION]&lt;/code&gt; : 해당 버전 실행&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ python -version&lt;/code&gt; : 실행중인 파이썬 버전 확인&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;virtualenv 사용법&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv virtualenv [VERSION] [VIRTUALENV_NAME]&lt;/code&gt; : 생성&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ virtualenv versions&lt;/code&gt; : 해당 버전 확인&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv activate [VIRTUALENV_NAME]&lt;/code&gt; : 해당 버전 실행&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pyenv deactivate&lt;/code&gt; : 실행중인 버전 종료&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;requirements.txt&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$ pip freeze &amp;gt; requirements.txt&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pip list &amp;gt; requirements.txt&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt; : 다른 사용자가 설치할 경우&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&#34;autoenv&#34;&gt;autoenv&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;autoenv 설치 및 세팅&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;$ brew install autoenv&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;.bash_profile(or .zshrc) 에 추가하기&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ source ~/.autoenv/activate.sh&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;또는 .bash_profile , .zshrc 에 &lt;code&gt;$source ~/.commonrc&lt;/code&gt; 를 추가 후&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ vi ~/.commonrc&lt;/code&gt; 를 만든 후&lt;/li&gt;
-&lt;li&gt;.commonrc에 &lt;code&gt;source ~/.autoenv/activate.sh&lt;/code&gt;를 추가&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;autoenv 실행하기&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;해당 프로젝트 폴더에 &lt;code&gt;$ vi .env&lt;/code&gt; 생성 후 아래를 추가&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;Activating pyenv for [PROJECT_NAME] Python v.3.5.1&amp;quot;
-pyenv activate [PROJECT_NAME]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;이후 해당 폴더에 들어올 때마다 파이썬환경 자동으로 켜짐&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$pyenv deactivate&lt;/code&gt; : 해당 파이썬 환경 종료&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://dobest.io/how-to-set-python-dev-env/&#34;&gt;https://dobest.io/how-to-set-python-dev-env/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&#34;&gt;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

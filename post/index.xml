@@ -7,8 +7,125 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ko-kr</language>
     <copyright>Copyright © 2016 by JKEUN All rights reserved.</copyright>
-    <lastBuildDate>Thu, 13 Oct 2016 19:19:27 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 14 Oct 2016 10:11:07 +0900</lastBuildDate>
     <atom:link href="https://jkeun.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Data Analysis Environment Setting</title>
+      <link>https://jkeun.github.io/post/data-analysis-env-setting/</link>
+      <pubDate>Fri, 14 Oct 2016 10:11:07 +0900</pubDate>
+      
+      <guid>https://jkeun.github.io/post/data-analysis-env-setting/</guid>
+      <description>
+
+&lt;h1 id=&#34;데이터-분석을-위한-초기-환경-세팅&#34;&gt;데이터 분석을 위한 초기 환경 세팅&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;기본적인 패키지 설치와 ipython(jupyter) 개발 환경에서 자주 사용하는 패키지 import 자동화를 다룬다.&lt;/li&gt;
+&lt;li&gt;python 2 에서도 print 함수, division 함수를 python 3 버전처럼 사용할 수 있도록 한다.&lt;/li&gt;
+&lt;li&gt;matplotlib 의 그래프 inline 출력 자동화를 다룬다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;pip-install-module&#34;&gt;pip install [module]&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;데이터 분석에 필요한 기본 패키지 설치&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;$ pip install numpy
+$ pip install pandas
+$ pip install sklearn
+$ pip install matplotlib
+$ pip install seaborn
+$ pip install [ mongodb / bs4 / requests / ... ] 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;statsmodels&lt;/strong&gt; 은 &lt;code&gt;pip install statsmodel&lt;/code&gt; 이 아닌 dev 버전 설치 ( 더 많은 기능 )
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pip install --upgrade --no-deps statsmodels&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;그 외 statsmodels 를 설치할때 뜨는 각종 모듈도 에러 문구 보면서 설치
+
+&lt;ul&gt;
+&lt;li&gt;ex. &lt;code&gt;pip install patsy&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;ipython-세팅하기&#34;&gt;~/.ipython/ 세팅하기&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ipython 전체에 대한 적용&lt;/li&gt;
+&lt;li&gt;pyenv는 pip install [module] 이 개별 분석 환경에 독립적으로 설치하는 것인 반면, &lt;code&gt;~/.ipython/&lt;/code&gt; 폴더의 설정은 모든 python 분석 환경에 적용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;00-py&#34;&gt;00.py&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;모듈 자동 import&lt;/li&gt;
+&lt;li&gt;startup 폴더에 00.py 파일을 만듦으로써 ipython 이 시작할때, 가장 먼저 이 파일이 실행되도록 한다.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_default/startup/00.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;# from __future__ import division
+from __future__ import print_function
+
+import numpy as np
+import scipy as sp
+import pandas as pd
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+import statsmodels.stats.api as sms
+import sklearn as sk
+import matplotlib as mpl
+import matplotlib.pylab as plt
+from mpl_toolkits.mplot3d import Axes3D
+import seaborn as sns
+
+sns.set()
+sns.set_color_codes()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ipython-config-py&#34;&gt;ipython_config.py&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ipython 의 기본설정 파일&lt;/li&gt;
+&lt;li&gt;division 문의 경우 &lt;strong&gt;00.py&lt;/strong&gt; 에서 불러올 땐 작동하지 않고, &lt;strong&gt;ipython_config.py&lt;/strong&gt; 에서 작동함&lt;/li&gt;
+&lt;li&gt;print 문의 경우 &lt;strong&gt;00.py&lt;/strong&gt;, &lt;strong&gt;ipython_config.py&lt;/strong&gt; 둘다 작동 잘 됨
+
+&lt;ul&gt;
+&lt;li&gt;따라서 ipython_config.py 에는 division 문을 추가한다&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_default/ipython_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;c = get_config()
+
+c.InteractiveShellApp.exec_lines = [
+	&#39;from __future__ import division&#39;
+	# &#39;from __future__ import print_function&#39;
+]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ipython-kernel-config-py&#34;&gt;ipython_kernel_config.py&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ipython kernel 설정&lt;/li&gt;
+&lt;li&gt;그래프를 그리는 작업을 할 때 inline 으로 출력&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ vi ~/.ipython/profile_defalult/ipython_kernel_config.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;c = get_config()
+c.InteractiveShellApp.matplotlib = &#39;inline&#39;
+c.InlineBackend.figure_format = &#39;svg&#39;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Python Development Environment Setting</title>
@@ -18,9 +135,9 @@
       <guid>https://jkeun.github.io/post/python-dev-env-setting/</guid>
       <description>
 
-&lt;h1 id=&#34;데이터-분석-개발-환경-python-v2-7-11&#34;&gt;데이터 분석 개발 환경 ( python v2.7.11 )&lt;/h1&gt;
+&lt;h1 id=&#34;파이썬-개발-환경-세팅-python-v2-7-11&#34;&gt;파이썬 개발 환경 세팅 ( python v2.7.11 )&lt;/h1&gt;
 
-&lt;p&gt;파이썬 개발환경 및 패키지 관리 자동화를 위한 세팅&lt;/p&gt;
+&lt;p&gt;파이썬 개발환경 및 패키지 관리 자동화&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -70,6 +187,10 @@ eval &amp;quot;$(pyenv virtualenv-init -)&amp;quot;
 &lt;li&gt;&lt;code&gt;$ pip install -r requirements.txt&lt;/code&gt; : 다른 사용자가 설치할 경우&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;hr /&gt;
+
+&lt;h2 id=&#34;autoenv&#34;&gt;autoenv&lt;/h2&gt;
+
 &lt;p&gt;&lt;strong&gt;autoenv 설치 및 세팅&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
@@ -97,6 +218,15 @@ pyenv activate [PROJECT_NAME]
 &lt;ul&gt;
 &lt;li&gt;이후 해당 폴더에 들어올 때마다 파이썬환경 자동으로 켜짐&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;$pyenv deactivate&lt;/code&gt; : 해당 파이썬 환경 종료&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&#34;reference&#34;&gt;Reference&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://dobest.io/how-to-set-python-dev-env/&#34;&gt;https://dobest.io/how-to-set-python-dev-env/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&#34;&gt;http://guswnsxodlf.github.io/pyenv-virtualenv-autoenv&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
